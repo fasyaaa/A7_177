@@ -1,5 +1,38 @@
 package com.example.spa.service_api
 
-interface SesiService {
+import com.example.spa.model.AllPasienResponse
+import com.example.spa.model.AllSesiResponse
+import com.example.spa.model.Pasien
+import com.example.spa.model.PasienDetailResponse
+import com.example.spa.model.Sesi
+import com.example.spa.model.SesiDetailResponse
+import retrofit2.Response
+import retrofit2.http.Body
+import retrofit2.http.DELETE
+import retrofit2.http.GET
+import retrofit2.http.Headers
+import retrofit2.http.POST
+import retrofit2.http.PUT
+import retrofit2.http.Path
 
+interface SesiService {
+    @Headers(
+        "Accept: application/json",
+        "Content-Type: application/json"
+    )
+
+    @POST("store")
+    suspend fun insertSesi(@Body sesi: Sesi)
+
+    @GET(".")
+    suspend fun getAllSesi(): AllSesiResponse
+
+    @GET("{id_sesi}")
+    suspend fun getSesibyIdSesi(@Path("id_sesi")idsesi: String): SesiDetailResponse
+
+    @PUT("{id_sesi}")
+    suspend fun updateSesi(@Path("id_sesi")idsesi: String, @Body sesi: Sesi)
+
+    @DELETE("{id_sesi}")
+    suspend fun deleteSesi(@Path("id_sesi")idsesi: String): Response<Void>
 }
