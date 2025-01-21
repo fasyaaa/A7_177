@@ -6,18 +6,18 @@ import kotlinx.serialization.Serializable
 data class AllJenisTrapiResponse(
     val status: Boolean,
     val message: String,
-    val data: List<jenisTrapi>
+    val data: List<JenisTrapi>
 )
 
 @Serializable
 data class JenisTrapiDetailResponse(
     val status: Boolean,
     val message: String,
-    val data: List<jenisTrapi>
+    val data: List<JenisTrapi>
 )
 
 @Serializable
-data class jenisTrapi(
+data class JenisTrapi(
     val id_jenisTrapi: String,
     val nama_jenisTrapi: String,
     val deskripsi_jenisTrapi: String
