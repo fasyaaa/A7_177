@@ -6,8 +6,10 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import coil.network.HttpException
 import com.example.spa.model.Pasien
 import com.example.spa.repository.PasienRepository
+import com.example.spa.ui.pasien.home.viewmodel.PasienHomeUiState
 import kotlinx.coroutines.launch
 
 sealed class PasienDetailUiState {
@@ -39,6 +41,18 @@ class PasienDetailViewModel(
                 PasienDetailUiState.Error
             }catch (e: Exception){
                 PasienDetailUiState.Error
+            }
+        }
+    }
+
+    fun deletePas(idPasien: String){
+        viewModelScope.launch {
+            try {
+                pas.deletePasien(idPasien)
+            }catch (e: Exception){
+                PasienHomeUiState.Error
+            }catch (e: HttpException){
+                PasienHomeUiState.Error
             }
         }
     }
