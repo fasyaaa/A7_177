@@ -45,4 +45,16 @@ class SesiDetailViewModel(
             }
         }
     }
+
+    fun deleteSs(idsesi: String){
+        viewModelScope.launch {
+            try {
+                ss.deleteSesi(idsesi)
+            }catch (e: IOException){
+                SesiDetailUiState.Error
+            }catch (e: HttpException){
+                SesiDetailUiState.Error
+            }
+        }
+    }
 }
