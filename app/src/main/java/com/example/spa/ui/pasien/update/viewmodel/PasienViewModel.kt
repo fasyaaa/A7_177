@@ -13,7 +13,7 @@ import com.example.spa.ui.pasien.insert.viewmodel.toPas
 import com.example.spa.ui.pasien.insert.viewmodel.toUiStatePas
 import kotlinx.coroutines.launch
 
-class UpdatePasienViewModel (
+class PasienUpdateViewModel (
     savedStateHandle: SavedStateHandle,
     private val pas: PasienRepository
 ): ViewModel(){
