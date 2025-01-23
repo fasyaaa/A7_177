@@ -9,7 +9,6 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.Pasien
 import com.example.spa.repository.PasienRepository
-import com.example.spa.ui.pasien.home.viewmodel.PasienHomeUiState
 import kotlinx.coroutines.launch
 
 sealed class PasienDetailUiState {
@@ -50,9 +49,9 @@ class PasienDetailViewModel(
             try {
                 pas.deletePasien(idPasien)
             }catch (e: Exception){
-                PasienHomeUiState.Error
+                PasienDetailUiState.Error
             }catch (e: HttpException){
-                PasienHomeUiState.Error
+                PasienDetailUiState.Error
             }
         }
     }

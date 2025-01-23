@@ -51,5 +51,5 @@ class NetworkKontakSesiRepository(
     override suspend fun getSesibyIdSesi(idsesi: String): Sesi {
         return kontakSesiApiService.getSesibyIdSesi(idsesi).data
     }
-    
+
 }

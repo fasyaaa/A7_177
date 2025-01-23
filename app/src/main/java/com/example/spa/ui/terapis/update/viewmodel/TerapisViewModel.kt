@@ -21,7 +21,6 @@ class TerapisViewModel (
         private set
 
     private val _id_terapis: String = checkNotNull(savedStateHandle[DestinasiTerapisUpdate.IdTerapis])
-
     init {
         viewModelScope.launch {
             terapisUpdateUiState = ter.getTerapisbyIdTerapis(_id_terapis)
