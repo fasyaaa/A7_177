@@ -25,11 +25,11 @@ interface JenisTrapiService {
     suspend fun getAllJenisTrapi(): AllJenisTrapiResponse
 
     @GET("{id_jenisTrapi}")
-    suspend fun getJenisTrapibyIdJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: String): JenisTrapiDetailResponse
+    suspend fun getJenisTrapibyIdJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: Int): JenisTrapiDetailResponse
 
     @PUT("{id_jenisTrapi}")
-    suspend fun updateJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: String, @Body jenisTrapi: JenisTrapi)
+    suspend fun updateJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: Int, @Body jenisTrapi: JenisTrapi)
 
     @DELETE("{id_jenisTrapi}")
-    suspend fun deleteJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: String): Response<Void>
+    suspend fun deleteJenisTrapi(@Path("id_jenisTrapi")idJenisTrapi: Int): Response<Void>
 }

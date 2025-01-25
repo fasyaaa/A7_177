@@ -8,13 +8,13 @@ import okio.IOException
 interface JenisTrapiRepository {
     suspend fun insertJenisTrapi(jenisTrapi: JenisTrapi)
 
-    suspend fun updateJenisTrapi(idjenistrapi: String, jenisTrapi: JenisTrapi)
+    suspend fun updateJenisTrapi(idjenistrapi: Int, jenisTrapi: JenisTrapi)
 
-    suspend fun deleteJenisTrapi(idjenistrapi: String)
+    suspend fun deleteJenisTrapi(idjenistrapi: Int)
 
     suspend fun getJenisTrapi(): AllJenisTrapiResponse
 
-    suspend fun getJenisTrapibyIdJenisTrapi(idjenistrapi: String): JenisTrapi
+    suspend fun getJenisTrapibyIdJenisTrapi(idjenistrapi: Int): JenisTrapi
 }
 
 class NetworkKontakJenisTrapiRepository(
@@ -28,11 +28,11 @@ class NetworkKontakJenisTrapiRepository(
         return kontakJenisTrapiApiService.getAllJenisTrapi()
     }
 
-    override suspend fun updateJenisTrapi(idjenistrapi: String, jenisTrapi: JenisTrapi) {
+    override suspend fun updateJenisTrapi(idjenistrapi: Int, jenisTrapi: JenisTrapi) {
         kontakJenisTrapiApiService.updateJenisTrapi(idjenistrapi, jenisTrapi)
     }
 
-    override suspend fun deleteJenisTrapi(idjenistrapi: String) {
+    override suspend fun deleteJenisTrapi(idjenistrapi: Int) {
         try {
             val response = kontakJenisTrapiApiService.deleteJenisTrapi(idjenistrapi)
             if(!response.isSuccessful){
@@ -47,7 +47,7 @@ class NetworkKontakJenisTrapiRepository(
         }
     }
 
-    override suspend fun getJenisTrapibyIdJenisTrapi(idjenistrapi: String): JenisTrapi {
+    override suspend fun getJenisTrapibyIdJenisTrapi(idjenistrapi: Int): JenisTrapi {
         return kontakJenisTrapiApiService.getJenisTrapibyIdJenisTrapi(idjenistrapi).data
     }
 

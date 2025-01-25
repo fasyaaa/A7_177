@@ -12,13 +12,13 @@ import okio.IOException
 interface TerapisRepository {
     suspend fun insertTerapis(terapis: Terapis)
 
-    suspend fun updateTerapis(idterapis: String, terapis: Terapis)
+    suspend fun updateTerapis(idterapis: Int, terapis: Terapis)
 
-    suspend fun deleteTerapis(idterapis: String)
+    suspend fun deleteTerapis(idterapis: Int)
 
     suspend fun getTerapis(): AllTerapisResponse
 
-    suspend fun getTerapisbyIdTerapis(idterapis: String): Terapis
+    suspend fun getTerapisbyIdTerapis(idterapis: Int): Terapis
 }
 
 class NetworkKontakTerapisRepository(
@@ -33,11 +33,11 @@ class NetworkKontakTerapisRepository(
         return kontakTerapisApiService.getAllTerapis()
     }
 
-    override suspend fun updateTerapis(idterapis: String, terapis: Terapis) {
+    override suspend fun updateTerapis(idterapis: Int, terapis: Terapis) {
         kontakTerapisApiService.updateTerapis(idterapis, terapis)
     }
 
-    override suspend fun deleteTerapis(idterapis: String) {
+    override suspend fun deleteTerapis(idterapis: Int) {
         try {
             val response = kontakTerapisApiService.deleteTerapis(idterapis)
             if (!response.isSuccessful){
@@ -52,7 +52,7 @@ class NetworkKontakTerapisRepository(
         }
     }
 
-    override suspend fun getTerapisbyIdTerapis(idterapis: String): Terapis {
+    override suspend fun getTerapisbyIdTerapis(idterapis: Int): Terapis {
         return kontakTerapisApiService.getTerapisbyIdTerapis(idterapis).data
     }
 }

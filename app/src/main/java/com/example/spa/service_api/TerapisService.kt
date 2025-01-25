@@ -28,11 +28,11 @@ interface TerapisService {
     suspend fun getAllTerapis(): AllTerapisResponse
 
     @GET("{id_terapis}")
-    suspend fun getTerapisbyIdTerapis(@Path("id_terapis")idterapis: String): TerapisDetailResponse
+    suspend fun getTerapisbyIdTerapis(@Path("id_terapis")idterapis: Int): TerapisDetailResponse
 
     @PUT("{id_terapis}")
-    suspend fun updateTerapis(@Path("id_terapis")idterapis: String, @Body terapis: Terapis)
+    suspend fun updateTerapis(@Path("id_terapis")idterapis: Int, @Body terapis: Terapis)
 
     @DELETE("{id_terapis}")
-    suspend fun deleteTerapis(@Path("id_terapis")idterapis: String): Response<Void>
+    suspend fun deleteTerapis(@Path("id_terapis")idterapis: Int): Response<Void>
 }

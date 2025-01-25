@@ -28,11 +28,11 @@ interface SesiService {
     suspend fun getAllSesi(): AllSesiResponse
 
     @GET("{id_sesi}")
-    suspend fun getSesibyIdSesi(@Path("id_sesi")idsesi: String): SesiDetailResponse
+    suspend fun getSesibyIdSesi(@Path("id_sesi")idsesi: Int): SesiDetailResponse
 
     @PUT("{id_sesi}")
-    suspend fun updateSesi(@Path("id_sesi")idsesi: String, @Body sesi: Sesi)
+    suspend fun updateSesi(@Path("id_sesi")idsesi: Int, @Body sesi: Sesi)
 
     @DELETE("{id_sesi}")
-    suspend fun deleteSesi(@Path("id_sesi")idsesi: String): Response<Void>
+    suspend fun deleteSesi(@Path("id_sesi")idsesi: Int): Response<Void>
 }

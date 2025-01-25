@@ -8,13 +8,13 @@ import okio.IOException
 interface PasienRepository {
     suspend fun insertPasien(pasien: Pasien)
 
-    suspend fun updatePasien(idpasien: String, pasien: Pasien)
+    suspend fun updatePasien(idpasien: Int, pasien: Pasien)
 
-    suspend fun deletePasien(idpasien: String)
+    suspend fun deletePasien(idpasien: Int)
 
     suspend fun getPasien(): AllPasienResponse
 
-    suspend fun getPasienbyIdPasien(idpasien: String): Pasien
+    suspend fun getPasienbyIdPasien(idpasien: Int): Pasien
 }
 
 class NetworkKontakPasienRepository(
@@ -29,11 +29,11 @@ class NetworkKontakPasienRepository(
         return kontakPasienApiService.getAllPasien()
     }
 
-    override suspend fun updatePasien(idpasien: String, pasien: Pasien) {
+    override suspend fun updatePasien(idpasien: Int, pasien: Pasien) {
         kontakPasienApiService.updatePasien(idpasien, pasien)
     }
 
-    override suspend fun deletePasien(idpasien: String) {
+    override suspend fun deletePasien(idpasien: Int) {
         try {
             val response = kontakPasienApiService.deletePasien(idpasien)
             if (!response.isSuccessful){
@@ -48,7 +48,7 @@ class NetworkKontakPasienRepository(
         }
     }
 
-    override suspend fun getPasienbyIdPasien(idpasien: String): Pasien {
+    override suspend fun getPasienbyIdPasien(idpasien: Int): Pasien {
         return kontakPasienApiService.getPasienbyIdPasien(idpasien).data
     }
 }

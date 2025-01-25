@@ -8,13 +8,13 @@ import okio.IOException
 interface SesiRepository {
     suspend fun insertSesi(sesi: Sesi)
 
-    suspend fun updateSesi(idsesi: String, sesi: Sesi)
+    suspend fun updateSesi(idsesi: Int, sesi: Sesi)
 
-    suspend fun deleteSesi(idsesi: String)
+    suspend fun deleteSesi(idsesi: Int)
 
     suspend fun getSesi(): AllSesiResponse
 
-    suspend fun getSesibyIdSesi(idsesi: String): Sesi
+    suspend fun getSesibyIdSesi(idsesi: Int): Sesi
 }
 
 class NetworkKontakSesiRepository(
@@ -29,11 +29,11 @@ class NetworkKontakSesiRepository(
         return kontakSesiApiService.getAllSesi()
     }
 
-    override suspend fun updateSesi(idsesi: String, sesi: Sesi) {
+    override suspend fun updateSesi(idsesi: Int, sesi: Sesi) {
         kontakSesiApiService.updateSesi(idsesi, sesi)
     }
 
-    override suspend fun deleteSesi(idsesi: String) {
+    override suspend fun deleteSesi(idsesi: Int) {
         try {
             val response = kontakSesiApiService.deleteSesi(idsesi)
             if(!response.isSuccessful){
@@ -48,7 +48,7 @@ class NetworkKontakSesiRepository(
         }
     }
 
-    override suspend fun getSesibyIdSesi(idsesi: String): Sesi {
+    override suspend fun getSesibyIdSesi(idsesi: Int): Sesi {
         return kontakSesiApiService.getSesibyIdSesi(idsesi).data
     }
 

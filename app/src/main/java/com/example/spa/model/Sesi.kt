@@ -1,6 +1,7 @@
 package com.example.spa.model
 
 import kotlinx.serialization.Contextual
+import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
 import java.sql.Date
 
@@ -15,16 +16,19 @@ data class AllSesiResponse(
 data class SesiDetailResponse(
     val status: Boolean,
     val message: String,
-    val data: List<Sesi>
+    val data: Sesi
 )
 
 @Serializable
 data class Sesi(
-    val id_sesi: String,
-    val id_pasien: String,
-    val id_terapis: String,
-    val id_jenisTrapi: String,
-    @Contextual
-    val tanggal_sesi: Date,
-    val catatan_sesi: String
+    @SerialName("id_sesi")
+    val idSesi: Int,
+    @SerialName("id_pasien")
+    val idPasien: Int,
+    @SerialName("id_terapis")
+    val idTerapis: Int,
+    @SerialName("id_jenisTrapi")
+    val idJenisTrapi: Int,
+    val tanggalSesi: String,
+    val catatanSesi: String
 )

@@ -25,11 +25,11 @@ interface PasienService {
     suspend fun getAllPasien(): AllPasienResponse
 
     @GET("{id_pasien}")
-    suspend fun getPasienbyIdPasien(@Path("id_pasien")idpasien: String): PasienDetailResponse
+    suspend fun getPasienbyIdPasien(@Path("id_pasien")idpasien: Int): PasienDetailResponse
 
     @PUT("{id_pasien}")
-    suspend fun updatePasien(@Path("id_pasien")idpasien: String, @Body pasien: Pasien)
+    suspend fun updatePasien(@Path("id_pasien")idpasien: Int, @Body pasien: Pasien)
 
     @DELETE("{id_pasien}")
-    suspend fun deletePasien(@Path("id_pasien")idpasien: String): Response<Void>
+    suspend fun deletePasien(@Path("id_pasien")idpasien: Int): Response<Void>
 }
