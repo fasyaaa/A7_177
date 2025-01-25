@@ -20,7 +20,7 @@ class PasienUpdateViewModel (
     var pasienUpdateUiState by mutableStateOf(PasInsertUiState())
         private set
 
-    private val _id_pasien: String = checkNotNull(savedStateHandle[DestinasiUpdate.IdPasien])
+    private val _id_pasien: Int = checkNotNull(savedStateHandle[DestinasiUpdate.IdPasien])
 
     init {
         viewModelScope.launch {

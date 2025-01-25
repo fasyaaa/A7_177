@@ -24,7 +24,7 @@ class PasienDetailViewModel(
     var pasienDetailState: PasienDetailUiState by mutableStateOf(PasienDetailUiState.Loading)
         private set
 
-    private val _id_pasien: String = checkNotNull(savedStateHandle[PasDetail.IDPAS])
+    private val _id_pasien: Int = checkNotNull(savedStateHandle[PasDetail.IDPAS])
 
     init {
         getPasienbyIdPasien()
@@ -44,7 +44,7 @@ class PasienDetailViewModel(
         }
     }
 
-    fun deletePas(idPasien: String){
+    fun deletePas(idPasien: Int){
         viewModelScope.launch {
             try {
                 pas.deletePasien(idPasien)

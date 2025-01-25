@@ -31,25 +31,25 @@ class PasienInsertViewModel(
 }
 
 data class PasInsertUiState(
-    val pasInsertUiEvent: PasInsertUiEvent = PasInsertUiEvent()
+    val pasInsertUiEvent: PasInsertUiEvent = PasInsertUiEvent(0,"","","","","")
 )
 
 data class PasInsertUiEvent(
-    val id_pasien: String = "",
-    val nama_pasien: String = "",
+    val idPasien: Int,
+    val namaPasien: String = "",
     val alamat: String = "",
-    val no_telp: String = "",
-    val tgl_lahir: String = "",
-    val riwayat_medis: String = ""
+    val noTelp: String= "",
+    val tglLahir: String = "",
+    val riwayatMedis: String = ""
 )
 
 fun PasInsertUiEvent.toPas(): Pasien = Pasien(
-    id_pasien = id_pasien,
-    nama_pasien = nama_pasien,
+    idPasien = idPasien,
+    namaPasien = namaPasien,
     alamat = alamat,
-    no_telp = no_telp,
-    tgl_lahir = tgl_lahir,
-    riwayat_medis = riwayat_medis
+    noTelp = noTelp,
+    tglLahir = tglLahir,
+    riwayatMedis = riwayatMedis
 )
 
 fun Pasien.toUiStatePas(): PasInsertUiState = PasInsertUiState(
@@ -57,10 +57,10 @@ fun Pasien.toUiStatePas(): PasInsertUiState = PasInsertUiState(
 )
 
 fun Pasien.toPasInsertUiEvent(): PasInsertUiEvent = PasInsertUiEvent(
-    id_pasien = id_pasien,
-    nama_pasien = nama_pasien,
+    idPasien = idPasien,
+    namaPasien = namaPasien,
     alamat = alamat,
-    no_telp = no_telp,
-    tgl_lahir = tgl_lahir,
-    riwayat_medis = riwayat_medis
+    noTelp = noTelp,
+    tglLahir = tglLahir,
+    riwayatMedis = riwayatMedis
 )
