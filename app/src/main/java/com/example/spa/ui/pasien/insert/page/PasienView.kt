@@ -54,7 +54,7 @@ fun EntryPasScreen(
             )
         }
     ){innerPadding ->
-        EntryBody(
+        EntryBodyPasien(
             insertUiState = viewModel.pasUiState,
             onPasienValueChange = viewModel::updateInsertPasState,
             onSaveClick = {
@@ -72,7 +72,7 @@ fun EntryPasScreen(
 }
 
 @Composable
-fun EntryBody(
+fun EntryBodyPasien(
     insertUiState: PasInsertUiState,
     onPasienValueChange: (PasInsertUiEvent) -> Unit,
     onSaveClick: () -> Unit,
@@ -82,7 +82,7 @@ fun EntryBody(
         verticalArrangement = Arrangement.spacedBy(18.dp),
         modifier = modifier.padding(12.dp)
     ){
-        FormInput(
+        FormInputPasien(
             insertUiEvent = insertUiState.pasInsertUiEvent,
             onValueChange = onPasienValueChange,
             modifier = Modifier.fillMaxWidth()
@@ -99,7 +99,7 @@ fun EntryBody(
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun FormInput(
+fun FormInputPasien(
     insertUiEvent: PasInsertUiEvent,
     onValueChange: (PasInsertUiEvent) -> Unit,
     modifier: Modifier = Modifier,
