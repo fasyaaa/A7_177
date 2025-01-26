@@ -9,7 +9,7 @@ import com.example.spa.model.Terapis
 import com.example.spa.repository.TerapisRepository
 import kotlinx.coroutines.launch
 
-class TerapisViewModel(private val ter: TerapisRepository): ViewModel(){
+class TerapisInsertViewModel(private val ter: TerapisRepository): ViewModel(){
     var terapisInsertUiState by mutableStateOf(TerapisInsertUiState())
         private set
 
@@ -29,21 +29,21 @@ class TerapisViewModel(private val ter: TerapisRepository): ViewModel(){
 }
 
 data class TerapisInsertUiState(
-    val terapisInsertUiEvent: TerapisInsertUiEvent = TerapisInsertUiEvent()
+    val terapisInsertUiEvent: TerapisInsertUiEvent = TerapisInsertUiEvent( 0, "", "", "")
 )
 
 data class TerapisInsertUiEvent(
-    val id_terapis: String = "",
-    val nama_terapis: String = "",
+    val idTerapis: Int,
+    val namaTerapis: String = "",
     val spesialis: String = "",
-    val no_izin_prak: String = ""
+    val noIzinPrak: String = ""
 )
 
 fun TerapisInsertUiEvent.toTer(): Terapis = Terapis(
-    id_terapis = id_terapis,
-    nama_terapis = nama_terapis,
+    idTerapis = idTerapis,
+    namaTerapis = namaTerapis,
     spesialis = spesialis,
-    no_izin_prak = no_izin_prak
+    noIzinPrak = noIzinPrak
 )
 
 fun Terapis.toUiStateTer(): TerapisInsertUiState = TerapisInsertUiState(
@@ -51,8 +51,8 @@ fun Terapis.toUiStateTer(): TerapisInsertUiState = TerapisInsertUiState(
 )
 
 fun Terapis.toTerapisInsertUiEvent(): TerapisInsertUiEvent = TerapisInsertUiEvent(
-    id_terapis = id_terapis,
-    nama_terapis = nama_terapis,
+    idTerapis = idTerapis,
+    namaTerapis = namaTerapis,
     spesialis = spesialis,
-    no_izin_prak = no_izin_prak
+    noIzinPrak = noIzinPrak
 )
