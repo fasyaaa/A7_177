@@ -13,14 +13,14 @@ import com.example.spa.ui.terapis.insert.viewmodel.toTer
 import com.example.spa.ui.terapis.insert.viewmodel.toUiStateTer
 import kotlinx.coroutines.launch
 
-class TerapisViewModel (
+class TerapisUpdateViewModel (
     savedStateHandle: SavedStateHandle,
     private val ter: TerapisRepository
 ): ViewModel(){
     var terapisUpdateUiState by mutableStateOf(TerapisInsertUiState())
         private set
 
-    private val _id_terapis: String = checkNotNull(savedStateHandle[DestinasiTerapisUpdate.IdTerapis])
+    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiTerapisUpdate.IdTerapis])
     init {
         viewModelScope.launch {
             terapisUpdateUiState = ter.getTerapisbyIdTerapis(_id_terapis)

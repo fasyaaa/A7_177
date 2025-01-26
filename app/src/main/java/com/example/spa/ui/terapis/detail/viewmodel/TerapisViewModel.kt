@@ -25,7 +25,7 @@ class TerapisDetailViewModel(
     var terapisDetailUiState: TerapisDetailUiState by mutableStateOf(TerapisDetailUiState.Loading)
         private set
 
-    private val _id_terapis: String = checkNotNull(savedStateHandle[DestinasiTerapisDetail.IdTerapis])
+    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiTerapisDetail.IdTerapis])
 
     init {
         getTerapisbyIdTerapis()
@@ -45,7 +45,7 @@ class TerapisDetailViewModel(
         }
     }
 
-    fun deleteTer(id_terapis: String){
+    fun deleteTer(id_terapis: Int){
         viewModelScope.launch {
             try {
                 ter.deleteTerapis(id_terapis)

@@ -20,7 +20,7 @@ class SesiUpdateViewModel(
     var sesiUpdateUiState by mutableStateOf(SesiInsertUiState())
         private set
 
-    private val _id_sesi: String = checkNotNull(savedStateHandle[DestinasiSesiUpdate.IdSesi])
+    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiSesiUpdate.IdSesi])
 
     init {
         viewModelScope.launch {
