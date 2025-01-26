@@ -28,7 +28,7 @@ import com.example.spa.ui.pasien.insert.viewmodel.PasInsertUiState
 import com.example.spa.ui.pasien.insert.viewmodel.PasienInsertViewModel
 import kotlinx.coroutines.launch
 
-object DestinasiInsertEntry: DestinasiNavigasi{
+object DestinasiInsertPasienEntry: DestinasiNavigasi{
     override val route = "item_entry"
     override val titleRes = "Entry Pasien"
 }
@@ -47,7 +47,7 @@ fun EntryPasScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             CoustumeTopAppBar(
-                title = DestinasiInsertEntry.titleRes,
+                title = DestinasiInsertPasienEntry.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
