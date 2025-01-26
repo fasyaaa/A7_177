@@ -145,7 +145,6 @@ fun PasLayout(
     pasien: List<Pasien>,
     modifier: Modifier = Modifier,
     onDetailClick: (Pasien) -> Unit,
-    onDeleteClick: (Pasien) -> Unit = {},
 ){
     LazyColumn(
         modifier = modifier,
