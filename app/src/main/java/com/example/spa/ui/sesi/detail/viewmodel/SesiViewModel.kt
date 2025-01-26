@@ -26,7 +26,7 @@ class SesiDetailViewModel(
     var sesiDetailUiState: SesiDetailUiState by mutableStateOf(SesiDetailUiState.Loading)
         private set
 
-    private val _id_sesi: String = checkNotNull(savedStateHandle[DestinasiSesiDetail.IdSesi])
+    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiSesiDetail.IdSesi])
 
     init {
         getSesibyIdSesi()
@@ -46,7 +46,7 @@ class SesiDetailViewModel(
         }
     }
 
-    fun deleteSs(idsesi: String){
+    fun deleteSs(idsesi: Int){
         viewModelScope.launch {
             try {
                 ss.deleteSesi(idsesi)
