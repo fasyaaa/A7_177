@@ -12,7 +12,7 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.pasien.PasienPenyediaViewModel
-import com.example.spa.ui.pasien.insert.page.EntryBody
+import com.example.spa.ui.pasien.insert.page.EntryBodyPasien
 import com.example.spa.ui.pasien.update.viewmodel.PasienUpdateViewModel
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.delay
@@ -48,7 +48,7 @@ fun UpdatePasScreen(
             )
         }
     ){padding ->
-        EntryBody(
+        EntryBodyPasien(
             modifier = Modifier.padding(padding),
             insertUiState = viewModel.pasienUpdateUiState,
             onPasienValueChange = viewModel::updateInsertPasState,
