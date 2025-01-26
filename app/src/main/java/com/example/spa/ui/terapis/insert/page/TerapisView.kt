@@ -28,7 +28,7 @@ import com.example.spa.ui.terapis.insert.viewmodel.TerapisInsertUiState
 import com.example.spa.ui.terapis.insert.viewmodel.TerapisInsertViewModel
 import kotlinx.coroutines.launch
 
-object DestinasiInsertEntry: DestinasiNavigasi {
+object DestinasiInsertTpsEntry: DestinasiNavigasi {
     override val route = "item_entry"
     override val titleRes = "Entry Terapis"
 }
@@ -47,7 +47,7 @@ fun EntryTpsScreen(
         modifier = modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
         topBar = {
             CoustumeTopAppBar(
-                title = DestinasiInsertEntry.titleRes,
+                title = DestinasiInsertTpsEntry.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
