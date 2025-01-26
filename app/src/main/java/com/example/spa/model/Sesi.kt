@@ -1,9 +1,7 @@
 package com.example.spa.model
 
-import kotlinx.serialization.Contextual
 import kotlinx.serialization.SerialName
 import kotlinx.serialization.Serializable
-import java.sql.Date
 
 @Serializable
 data class AllSesiResponse(
