@@ -20,7 +20,7 @@ class JenisTrapiUpdateViewModel(
     var jenisTrapiUpdateUiState by mutableStateOf(JenisTrapiInsertUiState())
         private set
 
-    private val _id_jenisTrapi: String = checkNotNull(savedStateHandle[DestinasiJenisTrapiUpdate.IdJenisTrapi])
+    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiJenisTrapiUpdate.IdJenisTrapi])
 
     init {
         viewModelScope.launch {

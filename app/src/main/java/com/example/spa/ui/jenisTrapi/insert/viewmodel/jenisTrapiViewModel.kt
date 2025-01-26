@@ -21,15 +21,15 @@ data class JenisTrapiInsertUiState(
 )
 
 data class JenisTrapiInsertUiEvent(
-    val id_jenisTrapi: String = "",
-    val nama_jenisTrapi: String = "",
-    val deskripsi_jenisTrapi: String = ""
+    val idJenisTrapi: Int = 0,
+    val namaJenisTrapi: String = "",
+    val deskripsiJenisTrapi: String = ""
 )
 
 fun JenisTrapiInsertUiEvent.toJtr(): JenisTrapi = JenisTrapi(
-    id_jenisTrapi = id_jenisTrapi,
-    nama_jenisTrapi = nama_jenisTrapi,
-    deskripsi_jenisTrapi = deskripsi_jenisTrapi
+    idJenisTrapi = idJenisTrapi,
+    namaJenisTrapi = namaJenisTrapi,
+    deskripsiJenisTrapi = deskripsiJenisTrapi
 )
 
 fun JenisTrapi.toUiStateJtr(): JenisTrapiInsertUiState = JenisTrapiInsertUiState(
@@ -37,7 +37,7 @@ fun JenisTrapi.toUiStateJtr(): JenisTrapiInsertUiState = JenisTrapiInsertUiState
 )
 
 fun JenisTrapi.toJenisTrapiEvent(): JenisTrapiInsertUiEvent = JenisTrapiInsertUiEvent(
-    id_jenisTrapi = id_jenisTrapi,
-    nama_jenisTrapi = nama_jenisTrapi,
-    deskripsi_jenisTrapi = deskripsi_jenisTrapi
+    idJenisTrapi = idJenisTrapi,
+    namaJenisTrapi = namaJenisTrapi,
+    deskripsiJenisTrapi = deskripsiJenisTrapi
 )

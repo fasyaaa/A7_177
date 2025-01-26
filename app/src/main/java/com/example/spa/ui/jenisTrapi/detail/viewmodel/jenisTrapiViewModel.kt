@@ -25,7 +25,7 @@ class JenisTrapiDetailViewModel(
     var jenisTrapiDetailState: JenisTrapiDetailUiState by mutableStateOf(JenisTrapiDetailUiState.Loading)
         private set
 
-    private val _id_jenisTrapi: String = checkNotNull(savedStateHandle[DestinasiJenisTrapiDetail.IdJenisTrapi])
+    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiJenisTrapiDetail.IdJenisTrapi])
 
     init {
         getJenisTrapibyIdJenisTrapi()
