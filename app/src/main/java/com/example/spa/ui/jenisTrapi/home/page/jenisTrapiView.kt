@@ -31,18 +31,12 @@ import androidx.compose.ui.input.nestedscroll.nestedScroll
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.spa.model.JenisTrapi
-import com.example.spa.model.Pasien
 import com.example.spa.ui.jenisTrapi.JenisTrapiPenyediaViewModel
 import com.example.spa.ui.jenisTrapi.home.viewmodel.JenisTrapiHomeUiState
 import com.example.spa.ui.jenisTrapi.home.viewmodel.JenisTrapiHomeViewModel
 import com.example.spa.ui.navigation.DestinasiNavigasi
-import com.example.spa.ui.pasien.home.page.HomePasienStatus
 import com.example.spa.ui.pasien.home.page.OnError
 import com.example.spa.ui.pasien.home.page.OnLoading
-import com.example.spa.ui.pasien.home.page.PasCard
-import com.example.spa.ui.pasien.home.page.PasLayout
-import com.example.spa.ui.pasien.home.page.PasienHome
-import com.example.spa.ui.pasien.home.viewmodel.PasienHomeUiState
 
 object JenisTrapiHome : DestinasiNavigasi {
     override val route = "homeJT"
