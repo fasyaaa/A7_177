@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.JenisTrapi
 import com.example.spa.repository.JenisTrapiRepository
+import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailUiState
 import kotlinx.coroutines.launch
 import okio.IOException
 
@@ -38,6 +39,18 @@ class JenisTrapiDetailViewModel(
                 val jenisTrapi = jtr.getJenisTrapibyIdJenisTrapi(_id_jenisTrapi)
                 JenisTrapiDetailUiState.Success(jenisTrapi)
             }catch (e: IOException){
+                JenisTrapiDetailUiState.Error
+            }catch (e: HttpException){
+                JenisTrapiDetailUiState.Error
+            }
+        }
+    }
+
+    fun deleteJeT(idJenisTrapi: Int){
+        viewModelScope.launch {
+            try {
+                jtr.deleteJenisTrapi(idJenisTrapi)
+            }catch (e: Exception){
                 JenisTrapiDetailUiState.Error
             }catch (e: HttpException){
                 JenisTrapiDetailUiState.Error
