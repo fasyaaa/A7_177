@@ -5,7 +5,10 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.example.spa.model.JenisTrapi
+import com.example.spa.model.Pasien
 import com.example.spa.model.Sesi
+import com.example.spa.model.Terapis
 import com.example.spa.repository.SesiRepository
 import kotlinx.coroutines.launch
 import java.sql.Date
@@ -30,25 +33,25 @@ class SesiInsertViewModel(private val ss: SesiRepository): ViewModel(){
 }
 
 data class SesiInsertUiState(
-    val sesiInsertUiEvent: SesiInsertUiEvent = SesiInsertUiEvent()
+    val sesiInsertUiEvent: SesiInsertUiEvent = SesiInsertUiEvent(0, 0, 0, 0, "", "")
 )
 
 data class SesiInsertUiEvent(
-    val id_sesi: String = "",
-    val id_pasien: String = "",
-    val id_terapis: String = "",
-    val id_jenisTrapi: String = "",
-    val tanggal_sesi: Date = Date(System.currentTimeMillis()),
-    val catatan_sesi: String = ""
+    val idSesi: Int,
+    val idPasien: Int,
+    val idTerapis: Int,
+    val idJenisTrapi: Int,
+    val tanggalSesi: String,
+    val catatanSesi: String
 )
 
 fun SesiInsertUiEvent.toSs(): Sesi = Sesi(
-    id_sesi = id_sesi,
-    id_pasien = id_pasien,
-    id_terapis = id_terapis,
-    id_jenisTrapi = id_jenisTrapi,
-    tanggal_sesi = tanggal_sesi,
-    catatan_sesi = catatan_sesi
+    idSesi = idSesi,
+    idPasien = idPasien,
+    idTerapis = idTerapis,
+    idJenisTrapi = idJenisTrapi,
+    tanggalSesi = tanggalSesi,
+    catatanSesi = catatanSesi
 )
 
 fun Sesi.toUiStateSs(): SesiInsertUiState = SesiInsertUiState(
@@ -56,10 +59,10 @@ fun Sesi.toUiStateSs(): SesiInsertUiState = SesiInsertUiState(
 )
 
 fun Sesi.toSsInsertUiEvent(): SesiInsertUiEvent = SesiInsertUiEvent(
-    id_sesi = id_sesi,
-    id_pasien = id_pasien,
-    id_terapis = id_terapis,
-    id_jenisTrapi = id_jenisTrapi,
-    tanggal_sesi = tanggal_sesi,
-    catatan_sesi = catatan_sesi
+    idSesi = idSesi,
+    idPasien = idPasien,
+    idTerapis = idTerapis,
+    idJenisTrapi = idJenisTrapi,
+    tanggalSesi = tanggalSesi,
+    catatanSesi = catatanSesi
 )
