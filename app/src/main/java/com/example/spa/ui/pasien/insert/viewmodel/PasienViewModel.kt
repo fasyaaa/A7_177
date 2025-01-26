@@ -31,11 +31,11 @@ class PasienInsertViewModel(
 }
 
 data class PasInsertUiState(
-    val pasInsertUiEvent: PasInsertUiEvent = PasInsertUiEvent(0,"","","","","")
+    val pasInsertUiEvent: PasInsertUiEvent = PasInsertUiEvent()
 )
 
 data class PasInsertUiEvent(
-    val idPasien: Int,
+    val idPasien: Int = 0,
     val namaPasien: String = "",
     val alamat: String = "",
     val noTelp: String= "",
