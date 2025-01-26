@@ -108,7 +108,7 @@ fun HomePasienStatus(
                     pasien = homeUiState.pasien,
                     modifier = modifier.fillMaxWidth(),
                     onDetailClick = {
-                        onDetailClick(it.namaPasien)
+                        onDetailClick(it.idPasien.toString())
                     }
                 )
             }
