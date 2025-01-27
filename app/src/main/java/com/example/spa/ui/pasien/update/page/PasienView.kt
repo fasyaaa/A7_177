@@ -20,7 +20,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 object DestinasiUpdatePas: DestinasiNavigasi{
-    override val route = "update"
+    override val route = "update_pasien"
     override val titleRes = "Update Pasien"
     const val idPasien = "id_pasien"
     val routesWithArg = "$route/{$idPasien}"
@@ -29,9 +29,9 @@ object DestinasiUpdatePas: DestinasiNavigasi{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun UpdatePasScreen(
-    onBack: () -> Unit,
+    onPasBack: () -> Unit,
     modifier: Modifier = Modifier,
-    onNavigate: () -> Unit,
+    onPasNavigate: () -> Unit,
     viewModel: PasienUpdateViewModel = viewModel(factory = PasienPenyediaViewModel.Factory)
 ){
     val coroutineScope = rememberCoroutineScope()
@@ -44,7 +44,7 @@ fun UpdatePasScreen(
                 title = DestinasiUpdatePas.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
-                navigateUp = onBack,
+                navigateUp = onPasBack,
             )
         }
     ){padding ->
@@ -57,7 +57,7 @@ fun UpdatePasScreen(
                     viewModel.updatePas()
                     delay(600)
                     withContext(Dispatchers.Main){
-                        onNavigate()
+                        onPasNavigate()
                     }
                 }
             }

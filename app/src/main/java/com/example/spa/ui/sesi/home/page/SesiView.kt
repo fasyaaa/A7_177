@@ -37,7 +37,7 @@ import com.example.spa.ui.sesi.home.viewmodel.SesiHomeUiState
 import com.example.spa.ui.sesi.home.viewmodel.SesiHomeViewModel
 
 object SesiHome : DestinasiNavigasi {
-    override val route = "home Sesi"
+    override val route = "home_sesi"
     override val titleRes = "Home JeT"
 }
 

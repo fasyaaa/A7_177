@@ -29,14 +29,14 @@ import com.example.spa.ui.pasien.insert.viewmodel.PasienInsertViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiInsertPasienEntry: DestinasiNavigasi{
-    override val route = "item_entry"
+    override val route = "entry_pasien"
     override val titleRes = "Entry Pasien"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun EntryPasScreen(
-    navigateBack: () -> Unit,
+    navigatePasBack: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PasienInsertViewModel = viewModel(factory = PasienPenyediaViewModel.Factory)
 ){
@@ -50,7 +50,7 @@ fun EntryPasScreen(
                 title = DestinasiInsertPasienEntry.titleRes,
                 canNavigateBack = true,
                 scrollBehavior = scrollBehavior,
-                navigateUp = navigateBack
+                navigateUp = navigatePasBack
             )
         }
     ){innerPadding ->
@@ -60,7 +60,7 @@ fun EntryPasScreen(
             onSaveClick = {
                 coroutineScope.launch {
                     viewModel.insertPas()
-                    navigateBack()
+                    navigatePasBack()
                 }
             },
             modifier = Modifier

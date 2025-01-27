@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -34,7 +35,7 @@ import com.example.spa.ui.terapis.detail.viewmodel.TerapisDetailUiState
 import com.example.spa.ui.terapis.detail.viewmodel.TerapisDetailViewModel
 
 object DestinasiDetailTerapis: DestinasiNavigasi {
-    override val route = "detail"
+    override val route = "detail_terapis"
     override val titleRes = "Detail Terapis"
     const val idTerapis = "id_terapis"
     val routesWithArg = "$route/{$idTerapis}"
@@ -111,7 +112,7 @@ fun DetailStatusTps(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Edit,
+                            imageVector = Icons.Default.Delete,
                             contentDescription = "Hapus Terapis"
                         )
                     }

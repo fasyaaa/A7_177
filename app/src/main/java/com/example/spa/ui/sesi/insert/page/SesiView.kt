@@ -29,7 +29,7 @@ import com.example.spa.ui.sesi.insert.viewmodel.SesiInsertViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiInsertSesiEntry: DestinasiNavigasi{
-    override val route = "item_entry"
+    override val route = "entry_sesi"
     override val titleRes = "Entry Sesi"
 }
 

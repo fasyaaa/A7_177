@@ -29,8 +29,8 @@ import com.example.spa.ui.navigation.DestinasiNavigasi
 import kotlinx.coroutines.launch
 
 object DestinasiInsertJeTEntry: DestinasiNavigasi {
-    override val route = "item_entry"
-    override val titleRes = "Entry Jenis Trapi"
+    override val route = "entry_jenisTrapi"
+    override val titleRes = "Entry Data Jenis Trapi"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

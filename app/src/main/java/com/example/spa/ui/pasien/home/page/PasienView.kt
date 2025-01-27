@@ -49,9 +49,9 @@ object PasienHome : DestinasiNavigasi{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomePasienScreen(
-    navigateToItemEntry: () -> Unit,
+    navigateToItemEntryPas: () -> Unit,
     modifier: Modifier = Modifier,
-    onDetailClick: (String) -> Unit,
+    onDetailPasClick: (String) -> Unit,
     viewModel: PasienHomeViewModel = viewModel(factory = PasienPenyediaViewModel.Factory)
 ) {
 //    ganti pake top app bar kita nanti
@@ -70,7 +70,7 @@ fun HomePasienScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToItemEntry,
+                onClick = navigateToItemEntryPas,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ){
@@ -82,7 +82,7 @@ fun HomePasienScreen(
             homeUiState = viewModel.pasUiState,
             retryAction = { viewModel.getPas() },
             modifier = Modifier.padding(innerPadding),
-            onDetailClick = onDetailClick
+            onDetailClick = onDetailPasClick
         )
     }
 }

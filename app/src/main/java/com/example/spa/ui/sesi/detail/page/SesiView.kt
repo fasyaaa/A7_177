@@ -38,7 +38,7 @@ import com.example.spa.ui.sesi.detail.viewmodel.SesiDetailUiState
 import com.example.spa.ui.sesi.detail.viewmodel.SesiDetailViewModel
 
 object DestinasiDetailSesi: DestinasiNavigasi {
-    override val route = "detail"
+    override val route = "detail_sesi"
     override val titleRes = "Detail Sesi"
     const val idSesi = "id_sesi"
     val routesWithArg = "$route/{$idSesi}"

@@ -22,7 +22,7 @@ import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
 object DestinasiUpdateTps: DestinasiNavigasi {
-    override val route = "update"
+    override val route = "update_terapis"
     override val titleRes = "Update Pas"
     const val idTerapis = "id_terapis"
     val routesWithArg = "$route/{$idTerapis}"

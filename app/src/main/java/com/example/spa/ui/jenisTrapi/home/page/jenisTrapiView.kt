@@ -40,7 +40,7 @@ import com.example.spa.ui.pasien.home.page.OnLoading
 
 object JenisTrapiHome : DestinasiNavigasi {
     override val route = "homeJT"
-    override val titleRes = "Home JeT"
+    override val titleRes = "Home Jenis Terapi"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

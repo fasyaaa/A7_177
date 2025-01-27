@@ -29,7 +29,7 @@ import com.example.spa.ui.terapis.insert.viewmodel.TerapisInsertViewModel
 import kotlinx.coroutines.launch
 
 object DestinasiInsertTpsEntry: DestinasiNavigasi {
-    override val route = "item_entry"
+    override val route = "entry_terapis"
     override val titleRes = "Entry Terapis"
 }
 

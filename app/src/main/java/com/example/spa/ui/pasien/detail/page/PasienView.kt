@@ -35,7 +35,7 @@ import com.example.spa.ui.pasien.home.page.OnError
 import com.example.spa.ui.pasien.home.page.OnLoading
 
 object DestinasiDetailPasien: DestinasiNavigasi{
-    override val route = "detail"
+    override val route = "detail_pasien"
     override val titleRes = "Detail Pasien"
     const val idPasien = "id_pasien"
     val routesWithArg = "$route/{$idPasien}"
@@ -44,8 +44,8 @@ object DestinasiDetailPasien: DestinasiNavigasi{
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun DetailPasienScreen(
-    navigateBack: () -> Unit,
-    navigateToItemUpdate: () -> Unit,
+    navigatePasBack: () -> Unit,
+    navigateToItemPasUpdate: () -> Unit,
     modifier: Modifier = Modifier,
     viewModel: PasienDetailViewModel = viewModel(factory = PasienPenyediaViewModel.Factory)
 ) {
@@ -54,7 +54,7 @@ fun DetailPasienScreen(
             CoustumeTopAppBar(
                 title = DestinasiDetailPasien.titleRes,
                 canNavigateBack = true,
-                navigateUp = navigateBack,
+                navigateUp = navigatePasBack,
                 onRefresh = {
                     viewModel.getPasienbyIdPasien()
                 }
@@ -62,7 +62,7 @@ fun DetailPasienScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToItemUpdate,
+                onClick = navigateToItemPasUpdate,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ) {
@@ -79,7 +79,7 @@ fun DetailPasienScreen(
             retryAction = { viewModel.getPasienbyIdPasien() },
             onDeleteAction = { idPasien ->
                 viewModel.deletePas(idPasien)
-                navigateBack()
+                navigatePasBack()
             }
         )
     }

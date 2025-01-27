@@ -39,14 +39,14 @@ import com.example.spa.ui.terapis.home.viewmodel.TerapisHomeUiState
 import com.example.spa.ui.terapis.home.viewmodel.TerapisHomeViewModel
 
 object DestinasiHomeTerapis : DestinasiNavigasi{
-    override val route =  "home"
-    override val titleRes = "Home Tps"
+    override val route =  "homeTps"
+    override val titleRes = "Data Terapis"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun TerapisHomeScreen(
-    navigateToltemEntry: () -> Unit,
+    navigateToItemEntry: () -> Unit,
     modifier: Modifier = Modifier,
     onDetailClick: (String) -> Unit = {},
     viewModel: TerapisHomeViewModel = viewModel(factory = TerapisPenyediaViewModel.Factory)
@@ -66,7 +66,7 @@ fun TerapisHomeScreen(
         },
         floatingActionButton = {
             FloatingActionButton(
-                onClick = navigateToltemEntry,
+                onClick = navigateToItemEntry,
                 shape = MaterialTheme.shapes.medium,
                 modifier = Modifier.padding(18.dp)
             ){
