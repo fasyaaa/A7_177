@@ -4,8 +4,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewModelScope
 import com.example.spa.model.JenisTrapi
 import com.example.spa.repository.JenisTrapiRepository
+import com.example.spa.ui.pasien.insert.viewmodel.toPas
+import kotlinx.coroutines.launch
 
 class JenisTrapiInsertViewModel(private val jtr: JenisTrapiRepository): ViewModel(){
     var jenisTrapisUiState by mutableStateOf(JenisTrapiInsertUiState())
@@ -13,6 +16,16 @@ class JenisTrapiInsertViewModel(private val jtr: JenisTrapiRepository): ViewMode
 
     fun updateInsertJtrState(jenisTrapiInsertUiEvent: JenisTrapiInsertUiEvent){
         jenisTrapisUiState = JenisTrapiInsertUiState(jenisTrapiInsertUiEvent = jenisTrapiInsertUiEvent)
+    }
+
+    suspend fun insertJeT(){
+        viewModelScope.launch {
+            try {
+                jtr.insertJenisTrapi(jenisTrapisUiState.jenisTrapiInsertUiEvent.toJtr())
+            } catch (e: Exception){
+                e.printStackTrace()
+            }
+        }
     }
 }
 
