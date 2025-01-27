@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -111,7 +112,7 @@ fun DetailStatusPas(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Edit, // Ganti ke ikon yang sesuai (misalnya Icons.Default.Delete)
+                            imageVector = Icons.Default.Delete,
                             contentDescription = "Hapus Pasien"
                         )
                     }

@@ -43,7 +43,7 @@ import com.example.spa.ui.pasien.home.viewmodel.PasienHomeViewModel
 
 object PasienHome : DestinasiNavigasi{
     override val route = "homePs"
-    override val titleRes = "Home Pas"
+    override val titleRes = "Data Pasien"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
