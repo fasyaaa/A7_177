@@ -11,6 +11,7 @@ import com.example.spa.ui.terapis.insert.viewmodel.TerapisInsertUiEvent
 import com.example.spa.ui.terapis.insert.viewmodel.TerapisInsertUiState
 import com.example.spa.ui.terapis.insert.viewmodel.toTer
 import com.example.spa.ui.terapis.insert.viewmodel.toUiStateTer
+import com.example.spa.ui.terapis.update.page.DestinasiUpdateTps
 import kotlinx.coroutines.launch
 
 class TerapisUpdateViewModel (
@@ -20,7 +21,7 @@ class TerapisUpdateViewModel (
     var terapisUpdateUiState by mutableStateOf(TerapisInsertUiState())
         private set
 
-    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiTerapisUpdate.IdTerapis])
+    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiUpdateTps.idTerapis])
     init {
         viewModelScope.launch {
             terapisUpdateUiState = ter.getTerapisbyIdTerapis(_id_terapis)

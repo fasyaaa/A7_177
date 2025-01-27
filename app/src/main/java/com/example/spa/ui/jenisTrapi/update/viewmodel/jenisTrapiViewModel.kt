@@ -7,10 +7,12 @@ import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spa.repository.JenisTrapiRepository
+import com.example.spa.ui.jenisTrapi.detail.page.DestinasiDetailJenisTrapi
 import com.example.spa.ui.jenisTrapi.insert.viewmodel.JenisTrapiInsertUiEvent
 import com.example.spa.ui.jenisTrapi.insert.viewmodel.JenisTrapiInsertUiState
 import com.example.spa.ui.jenisTrapi.insert.viewmodel.toJtr
 import com.example.spa.ui.jenisTrapi.insert.viewmodel.toUiStateJtr
+import com.example.spa.ui.jenisTrapi.update.page.DestinasiUpdateJeT
 import kotlinx.coroutines.launch
 
 class JenisTrapiUpdateViewModel(
@@ -20,7 +22,7 @@ class JenisTrapiUpdateViewModel(
     var jenisTrapiUpdateUiState by mutableStateOf(JenisTrapiInsertUiState())
         private set
 
-    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiJenisTrapiUpdate.IdJenisTrapi])
+    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiUpdateJeT.idJenisTrapi])
 
     init {
         viewModelScope.launch {

@@ -11,6 +11,7 @@ import com.example.spa.ui.sesi.insert.viewmodel.SesiInsertUiEvent
 import com.example.spa.ui.sesi.insert.viewmodel.SesiInsertUiState
 import com.example.spa.ui.sesi.insert.viewmodel.toSs
 import com.example.spa.ui.sesi.insert.viewmodel.toUiStateSs
+import com.example.spa.ui.sesi.update.page.DestinasiUpdateSs
 import kotlinx.coroutines.launch
 
 class SesiUpdateViewModel(
@@ -20,7 +21,7 @@ class SesiUpdateViewModel(
     var sesiUpdateUiState by mutableStateOf(SesiInsertUiState())
         private set
 
-    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiSesiUpdate.IdSesi])
+    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiUpdateSs.idSesi])
 
     init {
         viewModelScope.launch {

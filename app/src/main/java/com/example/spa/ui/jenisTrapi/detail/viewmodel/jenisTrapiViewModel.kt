@@ -9,7 +9,7 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.JenisTrapi
 import com.example.spa.repository.JenisTrapiRepository
-import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailUiState
+import com.example.spa.ui.jenisTrapi.detail.page.DestinasiDetailJenisTrapi
 import kotlinx.coroutines.launch
 import okio.IOException
 
@@ -26,7 +26,7 @@ class JenisTrapiDetailViewModel(
     var jenisTrapiDetailState: JenisTrapiDetailUiState by mutableStateOf(JenisTrapiDetailUiState.Loading)
         private set
 
-    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiJenisTrapiDetail.IdJenisTrapi])
+    private val _id_jenisTrapi: Int = checkNotNull(savedStateHandle[DestinasiDetailJenisTrapi.idJenisTrapi])
 
     init {
         getJenisTrapibyIdJenisTrapi()

@@ -24,8 +24,8 @@ import kotlinx.coroutines.withContext
 object DestinasiUpdateTps: DestinasiNavigasi {
     override val route = "update"
     override val titleRes = "Update Pas"
-    const val idPasien = "id_pasien"
-    val routesWithArg = "$route/{$idPasien}"
+    const val idTerapis = "id_terapis"
+    val routesWithArg = "$route/{$idTerapis}"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

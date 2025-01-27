@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.Sesi
 import com.example.spa.repository.SesiRepository
+import com.example.spa.ui.sesi.detail.page.DestinasiDetailSesi
 import kotlinx.coroutines.launch
 import okio.IOException
 
@@ -26,7 +27,7 @@ class SesiDetailViewModel(
     var sesiDetailUiState: SesiDetailUiState by mutableStateOf(SesiDetailUiState.Loading)
         private set
 
-    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiSesiDetail.IdSesi])
+    private val _id_sesi: Int = checkNotNull(savedStateHandle[DestinasiDetailSesi.idSesi])
 
     init {
         getSesibyIdSesi()

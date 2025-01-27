@@ -11,6 +11,7 @@ import com.example.spa.ui.pasien.insert.viewmodel.PasInsertUiEvent
 import com.example.spa.ui.pasien.insert.viewmodel.PasInsertUiState
 import com.example.spa.ui.pasien.insert.viewmodel.toPas
 import com.example.spa.ui.pasien.insert.viewmodel.toUiStatePas
+import com.example.spa.ui.pasien.update.page.DestinasiUpdatePas
 import kotlinx.coroutines.launch
 
 class PasienUpdateViewModel (
@@ -20,7 +21,7 @@ class PasienUpdateViewModel (
     var pasienUpdateUiState by mutableStateOf(PasInsertUiState())
         private set
 
-    private val _id_pasien: Int = checkNotNull(savedStateHandle[DestinasiUpdate.IdPasien])
+    private val _id_pasien: Int = checkNotNull(savedStateHandle[DestinasiUpdatePas.idPasien])
 
     init {
         viewModelScope.launch {

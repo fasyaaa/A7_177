@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.Pasien
 import com.example.spa.repository.PasienRepository
+import com.example.spa.ui.pasien.detail.page.DestinasiDetailPasien
 import kotlinx.coroutines.launch
 
 sealed class PasienDetailUiState {
@@ -24,7 +25,7 @@ class PasienDetailViewModel(
     var pasienDetailState: PasienDetailUiState by mutableStateOf(PasienDetailUiState.Loading)
         private set
 
-    private val _id_pasien: Int = checkNotNull(savedStateHandle[PasDetail.IDPAS])
+    private val _id_pasien: Int = checkNotNull(savedStateHandle[DestinasiDetailPasien.idPasien])
 
     init {
         getPasienbyIdPasien()

@@ -9,6 +9,7 @@ import androidx.lifecycle.viewModelScope
 import coil.network.HttpException
 import com.example.spa.model.Terapis
 import com.example.spa.repository.TerapisRepository
+import com.example.spa.ui.terapis.detail.page.DestinasiDetailTerapis
 import kotlinx.coroutines.launch
 import okio.IOException
 
@@ -25,7 +26,7 @@ class TerapisDetailViewModel(
     var terapisDetailUiState: TerapisDetailUiState by mutableStateOf(TerapisDetailUiState.Loading)
         private set
 
-    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiTerapisDetail.IdTerapis])
+    private val _id_terapis: Int = checkNotNull(savedStateHandle[DestinasiDetailTerapis.idTerapis])
 
     init {
         getTerapisbyIdTerapis()
