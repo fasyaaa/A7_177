@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.colorResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.spa.R
 import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.pasien.PasienPenyediaViewModel
 import com.example.spa.ui.pasien.insert.page.EntryBodyPasien
@@ -46,7 +48,8 @@ fun UpdatePasScreen(
                 scrollBehavior = scrollBehavior,
                 navigateUp = onPasBack,
             )
-        }
+        },
+        containerColor = colorResource(id = R.color.Background)
     ){padding ->
         EntryBodyPasien(
             modifier = Modifier.padding(padding),

@@ -9,7 +9,9 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.colorResource
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.spa.R
 import com.example.spa.ui.jenisTrapi.JenisTrapiPenyediaViewModel
 import com.example.spa.ui.jenisTrapi.insert.page.EntryBodyJenisTrapi
 import com.example.spa.ui.jenisTrapi.update.viewmodel.JenisTrapiUpdateViewModel
@@ -46,7 +48,8 @@ fun UpdateJeTScreen(
                 scrollBehavior = scrollBehavior,
                 navigateUp = onBack,
             )
-        }
+        },
+        containerColor = colorResource(id = R.color.Background)
     ){padding ->
         EntryBodyJenisTrapi(
             modifier = Modifier.padding(padding),

@@ -7,7 +7,6 @@ import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
 import com.example.spa.model.JenisTrapi
 import com.example.spa.repository.JenisTrapiRepository
-import com.example.spa.ui.pasien.insert.viewmodel.toPas
 import kotlinx.coroutines.launch
 
 class JenisTrapiInsertViewModel(private val jtr: JenisTrapiRepository): ViewModel(){
@@ -27,11 +26,33 @@ class JenisTrapiInsertViewModel(private val jtr: JenisTrapiRepository): ViewMode
             }
         }
     }
+
+    fun validateFields(): Boolean {
+        val event = jenisTrapisUiState.jenisTrapiInsertUiEvent
+        val errorState = FormErrorStateJeT(
+            namaJenisTrapi = if (event.namaJenisTrapi.isNotEmpty()) null else "Nama Terapi tidak boleh kosong",
+            deskripsiJenisTrapi = if (event.deskripsiJenisTrapi.isNotEmpty()) null else "Deskripsi tidak boleh kosong",
+        )
+        jenisTrapisUiState = jenisTrapisUiState.copy(isEntryValid = errorState)
+        return errorState.isValid()
+    }
 }
 
 data class JenisTrapiInsertUiState(
-    val jenisTrapiInsertUiEvent: JenisTrapiInsertUiEvent = JenisTrapiInsertUiEvent()
+    val jenisTrapiInsertUiEvent: JenisTrapiInsertUiEvent = JenisTrapiInsertUiEvent(),
+    val isEntryValid: FormErrorStateJeT = FormErrorStateJeT(),
 )
+
+data class FormErrorStateJeT(
+    val namaJenisTrapi: String? = null,
+    val deskripsiJenisTrapi: String? = null
+){
+    fun isValid(): Boolean{
+        return namaJenisTrapi == null &&
+                deskripsiJenisTrapi == null
+    }
+    fun hasError(field: String?): Boolean = field != null
+}
 
 data class JenisTrapiInsertUiEvent(
     val idJenisTrapi: Int = 0,
