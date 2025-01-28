@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Delete
 import androidx.compose.material.icons.filled.Edit
 import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
@@ -25,12 +26,8 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.example.spa.model.Pasien
 import com.example.spa.model.Sesi
 import com.example.spa.ui.navigation.DestinasiNavigasi
-import com.example.spa.ui.pasien.PasienPenyediaViewModel
-import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailUiState
-import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailViewModel
 import com.example.spa.ui.pasien.home.page.OnError
 import com.example.spa.ui.pasien.home.page.OnLoading
 import com.example.spa.ui.sesi.SesiPenyediaViewModel
@@ -115,7 +112,7 @@ fun DetailStatusSs(
                         modifier = Modifier.align(Alignment.CenterHorizontally)
                     ) {
                         Icon(
-                            imageVector = Icons.Default.Edit,
+                            imageVector = Icons.Default.Delete,
                             contentDescription = "Hapus Pasien"
                         )
                     }

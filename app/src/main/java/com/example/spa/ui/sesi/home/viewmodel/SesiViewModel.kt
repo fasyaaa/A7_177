@@ -9,6 +9,7 @@ import coil.network.HttpException
 import com.example.spa.model.Sesi
 import com.example.spa.repository.SesiRepository
 import kotlinx.coroutines.launch
+import okio.IOException
 
 sealed class SesiHomeUiState{
     data class Success(val sesi: List<Sesi>): SesiHomeUiState()
@@ -30,7 +31,7 @@ class SesiHomeViewModel (private val ss: SesiRepository)
             ssUiState = SesiHomeUiState.Loading
             ssUiState = try {
                 SesiHomeUiState.Success(ss.getSesi().data)
-            } catch (e: Exception){
+            } catch (e: IOException){
                 SesiHomeUiState.Error
             } catch (e: HttpException){
                 SesiHomeUiState.Error

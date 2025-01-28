@@ -38,7 +38,7 @@ import com.example.spa.ui.sesi.home.viewmodel.SesiHomeViewModel
 
 object SesiHome : DestinasiNavigasi {
     override val route = "home_sesi"
-    override val titleRes = "Home JeT"
+    override val titleRes = "Home Sesi"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -88,7 +88,7 @@ fun HomeSesiStatus(
     modifier: Modifier = Modifier,
     onDetailClick: (String) -> Unit,
 ) {
-    when (homeUiState) {
+    when(homeUiState) {
         is SesiHomeUiState.Loading -> OnLoading(modifier = modifier.fillMaxSize())
 
         is SesiHomeUiState.Success ->
