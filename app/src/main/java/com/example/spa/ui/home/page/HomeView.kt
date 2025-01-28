@@ -1,5 +1,6 @@
 package com.example.spa.ui.home.page
 
+import TopAppBarCst
 import android.view.MenuItem
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -25,12 +26,15 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
+import com.example.spa.R
 import com.example.spa.ui.navigation.DestinasiNavigasi
 
 object DestinasiHomeInti : DestinasiNavigasi {
     override val route = "home"
-    override val titleRes = "Home Int"
+    override val titleRes = ""
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
@@ -44,12 +48,14 @@ fun HomeIntiScreen(
 ){
     Scaffold(
         topBar = {
-            SmallTopAppBar(
-                title = { Text(text = "Home Int") },
-                modifier = Modifier.background(MaterialTheme.colorScheme.primary)
+            TopAppBarCst(
+                title1 = "Welcome to \nYako Spa",
+                title2 = "You’re satisfy is our commitment",
+                navigateUp = {}
             )
         },
-        modifier = modifier.fillMaxSize()
+        modifier = modifier.fillMaxSize(),
+        containerColor = colorResource(id = R.color.Background)
     ) { paddingValues ->
         Column(
             modifier = Modifier
