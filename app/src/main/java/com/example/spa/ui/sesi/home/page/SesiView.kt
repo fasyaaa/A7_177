@@ -6,6 +6,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
@@ -26,6 +27,7 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import com.example.spa.model.Sesi
@@ -33,8 +35,11 @@ import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.pasien.home.page.OnError
 import com.example.spa.ui.pasien.home.page.OnLoading
 import com.example.spa.ui.sesi.SesiPenyediaViewModel
+import com.example.spa.ui.sesi.detail.page.ComponentDetailSs
 import com.example.spa.ui.sesi.home.viewmodel.SesiHomeUiState
 import com.example.spa.ui.sesi.home.viewmodel.SesiHomeViewModel
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 object SesiHome : DestinasiNavigasi {
     override val route = "home_sesi"
@@ -152,22 +157,34 @@ fun SesiCard(
                 text = sesi.namaPasien,
                 style = MaterialTheme.typography.titleLarge
             )
-            Text(
-                text = sesi.namaTerapis,
-                style = MaterialTheme.typography.titleMedium
+
+            val dateTime = OffsetDateTime.parse(sesi.tanggalSesi) // Parse ISO 8601
+            val formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy - MM - dd"))
+            val formattedTime = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+
+            ComponentDetailSs(
+                judul = "Tanggal Sesi",
+                isinya = formattedDate,
+                textStyle = MaterialTheme.typography.titleLarge
             )
-            Text(
-                text = sesi.namaJenisTrapi,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = sesi.catatanSesi,
-                style = MaterialTheme.typography.titleMedium
-            )
-            Text(
-                text = sesi.tanggalSesi,
-                style = MaterialTheme.typography.titleMedium
+            ComponentDetailSs(
+                judul = "Waktu Sesi",
+                isinya = formattedTime,
+                textStyle = MaterialTheme.typography.titleLarge
             )
         }
+    }
+}
+
+@Composable
+fun ComponentDetailSs(
+    judul: String,
+    isinya: String,
+    modifier: Modifier = Modifier,
+    textStyle: TextStyle = MaterialTheme.typography.bodyMedium
+) {
+    Column(modifier = modifier) {
+        Text(text = judul, style = MaterialTheme.typography.labelMedium)
+        Text(text = isinya, style = textStyle)
     }
 }

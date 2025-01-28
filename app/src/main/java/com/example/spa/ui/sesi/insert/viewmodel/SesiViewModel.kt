@@ -15,6 +15,7 @@ import com.example.spa.repository.SesiRepository
 import com.example.spa.repository.TerapisRepository
 import com.example.spa.ui.pasien.insert.viewmodel.FormErrorStatePas
 import kotlinx.coroutines.launch
+import kotlin.math.tan
 
 class SesiInsertViewModel(private val ss: SesiRepository, private val pas: PasienRepository,
                           private val tps: TerapisRepository, private val JeT: JenisTrapiRepository)
@@ -110,8 +111,26 @@ class SesiInsertViewModel(private val ss: SesiRepository, private val pas: Pasie
 }
 
 data class SesiInsertUiState(
-    val sesiInsertUiEvent: SesiInsertUiEvent = SesiInsertUiEvent()
+    val sesiInsertUiEvent: SesiInsertUiEvent = SesiInsertUiEvent(),
+    val isEntryValid: FormErrorStateSesi = FormErrorStateSesi(),
 )
+
+data class FormErrorStateSesi(
+    val idPasien: String? = null,
+    val idTerapis: String? = null,
+    val idJenisTrapi: String? = null,
+    val tanggalSesi: String? = null,
+    val catatanSesi: String? = null,
+){
+    fun isValid(): Boolean{
+        return idPasien == null &&
+                idTerapis == null &&
+                idJenisTrapi == null &&
+                tanggalSesi == null &&
+                catatanSesi == null
+    }
+    fun hasError(field: String?): Boolean = field != null
+}
 
 data class SesiInsertUiEvent(
     val idSesi: Int? = null,

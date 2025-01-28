@@ -33,6 +33,8 @@ import com.example.spa.ui.pasien.home.page.OnLoading
 import com.example.spa.ui.sesi.SesiPenyediaViewModel
 import com.example.spa.ui.sesi.detail.viewmodel.SesiDetailUiState
 import com.example.spa.ui.sesi.detail.viewmodel.SesiDetailViewModel
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 object DestinasiDetailSesi: DestinasiNavigasi {
     override val route = "detail_sesi"
@@ -150,7 +152,14 @@ fun ItemDetailSs(
             Spacer(modifier = Modifier.padding(5.dp))
             ComponentDetailSs(judul = "Catatan Sesi", isinya = sesi.catatanSesi)
             Spacer(modifier = Modifier.padding(5.dp))
-            ComponentDetailSs(judul = "Tanggal Sesi", isinya = sesi.tanggalSesi)
+
+            val dateTime = OffsetDateTime.parse(sesi.tanggalSesi) // Parse ISO 8601
+            val formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+            val formattedTime = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
+
+            ComponentDetailSs(judul = "Tanggal Sesi", isinya = formattedDate)
+            Spacer(modifier = Modifier.padding(5.dp))
+            ComponentDetailSs(judul = "Waktu Sesi", isinya = formattedTime)
             Spacer(modifier = Modifier.padding(5.dp))
         }
     }
