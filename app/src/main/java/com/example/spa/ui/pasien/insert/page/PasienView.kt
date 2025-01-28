@@ -187,7 +187,6 @@ fun FormInputPasien(
             singleLine = true,
             shape = RoundedCornerShape(50.dp)
         )
-
         Text(
             text = errorState.idPasien ?: "",
             color = Color.Red
