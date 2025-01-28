@@ -22,10 +22,12 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.spa.R
 import com.example.spa.model.Pasien
 import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.pasien.PasienPenyediaViewModel
@@ -71,7 +73,8 @@ fun DetailPasienScreen(
                     contentDescription = "Edit Kontak"
                 )
             }
-        }
+        },
+        containerColor = colorResource(id = R.color.Background)
     ) { innerPadding ->
         DetailStatusPas(
             modifier = Modifier.padding(innerPadding),

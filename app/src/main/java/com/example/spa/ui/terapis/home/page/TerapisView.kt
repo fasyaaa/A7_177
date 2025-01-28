@@ -28,8 +28,10 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.spa.R
 import com.example.spa.model.Terapis
 import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.pasien.home.page.OnError
@@ -73,6 +75,7 @@ fun TerapisHomeScreen(
                 Icon(imageVector = Icons.Default.Add, contentDescription = "Add Kontak")
             }
         },
+        containerColor = colorResource(id = R.color.Background)
     ){ innerPadding ->
         HomeStatus(
             homeUiState = viewModel.terUiState,

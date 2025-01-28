@@ -8,6 +8,7 @@ import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
+import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.text.KeyboardOptions
@@ -15,6 +16,7 @@ import androidx.compose.foundation.verticalScroll
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.DateRange
 import androidx.compose.material3.Button
+import androidx.compose.material3.ButtonDefaults
 import androidx.compose.material3.Divider
 import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
@@ -26,6 +28,7 @@ import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.input.nestedscroll.nestedScroll
@@ -112,8 +115,14 @@ fun EntryBodySesi(
         )
         Button(
             onClick = onSaveClick,
-            shape = MaterialTheme.shapes.small,
-            modifier = Modifier.fillMaxWidth()
+            shape = RoundedCornerShape(8.dp),
+            modifier = Modifier
+                .fillMaxWidth(0.8f)
+                .size(height = 48.dp, width = 120.dp)
+                .align(Alignment.CenterHorizontally),
+            colors = ButtonDefaults.buttonColors(
+                containerColor = colorResource(id = R.color.ButtonBorder)
+            )
         ) {
             Text(text = "Simpan")
         }
@@ -224,6 +233,7 @@ fun FormInputSesi(
 
         OutlinedTextField(
             value = insertUiEvent.catatanSesi,
+            modifier = Modifier.fillMaxWidth(),
             onValueChange = { onValueChange(insertUiEvent.copy(catatanSesi = it)) },
             label = { Text("Catatan", modifier = Modifier, color = colorResource(id = R.color.black)) },
             placeholder = {Text("Masukkan Catatan")},
@@ -249,6 +259,7 @@ fun FormInputSesi(
 
         OutlinedTextField(
             value = insertUiEvent.tanggalSesi,
+            modifier = Modifier.fillMaxWidth(),
             onValueChange = { onValueChange(insertUiEvent.copy(tanggalSesi = it)) },
             label = { Text("Tanggal dan Waktu") },
             placeholder = { Text("Masukkan Tanggal dan Waktu (YYYY-MM-DD HH:MM)") },
