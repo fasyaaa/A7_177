@@ -97,7 +97,6 @@ fun EntryBodyPasien(
     }
 }
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FormInputPasien(
     insertUiEvent: PasInsertUiEvent,
