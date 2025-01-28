@@ -7,13 +7,9 @@ import okio.IOException
 
 interface SesiRepository {
     suspend fun insertSesi(sesi: Sesi)
-
     suspend fun updateSesi(idsesi: Int, sesi: Sesi)
-
     suspend fun deleteSesi(idsesi: Int)
-
     suspend fun getSesi(): AllSesiResponse
-
     suspend fun getSesibyIdSesi(idsesi: Int): Sesi
 }
 

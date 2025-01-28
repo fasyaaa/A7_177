@@ -1,8 +1,7 @@
 package com.example.spa.service_api
 
-import com.example.spa.model.AllPasienResponse
 import com.example.spa.model.AllSesiResponse
-import com.example.spa.model.Pasien
+import com.example.spa.model.JenisTrapiDetailResponse
 import com.example.spa.model.PasienDetailResponse
 import com.example.spa.model.Sesi
 import com.example.spa.model.SesiDetailResponse

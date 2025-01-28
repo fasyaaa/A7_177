@@ -149,15 +149,15 @@ fun SesiCard(
             verticalArrangement = Arrangement.spacedBy(8.dp)
         ) {
             Text(
-                text = sesi.idPasien.toString(),
+                text = sesi.namaPasien,
                 style = MaterialTheme.typography.titleLarge
             )
             Text(
-                text = sesi.idTerapis.toString(),
+                text = sesi.namaTerapis,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(
-                text = sesi.idJenisTrapi.toString(),
+                text = sesi.namaJenisTrapi,
                 style = MaterialTheme.typography.titleMedium
             )
             Text(

@@ -19,8 +19,11 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.input.nestedscroll.nestedScroll
+import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
+import com.example.spa.R
+import com.example.spa.ui.customwidget.DynamicSelectedField
 import com.example.spa.ui.navigation.DestinasiNavigasi
 import com.example.spa.ui.sesi.SesiPenyediaViewModel
 import com.example.spa.ui.sesi.insert.viewmodel.SesiInsertUiEvent
@@ -52,7 +55,8 @@ fun EntrySsScreen(
                 scrollBehavior = scrollBehavior,
                 navigateUp = navigateBack
             )
-        }
+        },
+        containerColor = colorResource(id = R.color.Background)
     ){innerPadding ->
         EntryBodySesi(
             insertUiState = viewModel.sesiUiState,
@@ -63,6 +67,7 @@ fun EntrySsScreen(
                     navigateBack()
                 }
             },
+            viewModel = viewModel,
             modifier = Modifier
                 .padding(innerPadding)
                 .verticalScroll(rememberScrollState())
@@ -76,6 +81,7 @@ fun EntryBodySesi(
     insertUiState: SesiInsertUiState,
     onSesiValueChange: (SesiInsertUiEvent) -> Unit,
     onSaveClick: () -> Unit,
+    viewModel: SesiInsertViewModel,
     modifier: Modifier = Modifier
 ){
     Column(
@@ -85,7 +91,8 @@ fun EntryBodySesi(
         FormInputSesi(
             insertUiEvent = insertUiState.sesiInsertUiEvent,
             onValueChange = onSesiValueChange,
-            modifier = Modifier.fillMaxWidth()
+            viewModel = viewModel,
+            modifier = Modifier.fillMaxWidth(),
         )
         Button(
             onClick = onSaveClick,
@@ -102,52 +109,66 @@ fun EntryBodySesi(
 fun FormInputSesi(
     insertUiEvent: SesiInsertUiEvent,
     onValueChange: (SesiInsertUiEvent) -> Unit,
+    viewModel: SesiInsertViewModel,
     modifier: Modifier = Modifier,
     enabled: Boolean = true
-){
+) {
+    val pasienList = viewModel.pasienList.map { it.namaPasien } // Ambil hanya nama pasien
+    val terapisList = viewModel.terapisList.map { it.namaTerapis }
+    val jenisTrapiList = viewModel.jenisTrapiList.map { it.namaJenisTrapi }
+
     Column(
         modifier = modifier,
         verticalArrangement = Arrangement.spacedBy(12.dp)
-    ){
-        OutlinedTextField(
-            value = insertUiEvent.idPasien.toString(),
-            onValueChange = {
-                val newValue = it.toIntOrNull()
-                if (newValue != null) {
-                    onValueChange(insertUiEvent.copy(idPasien = newValue))
+    ) {
+        DynamicSelectedField(
+            selectedValue = insertUiEvent.idPasien?.let { id ->
+                viewModel.pasienList.find { it.idPasien == id }?.namaPasien ?: "Pilih Pasien"
+            } ?: "Pilih Pasien",
+            options = pasienList,
+            label = "Pasien",
+            placeholder = "Pilih Pasien",
+            onValueChangedEvent = { selectedNama ->
+                val selectedId = viewModel.pasienList.find { it.namaPasien == selectedNama }?.idPasien
+                if (selectedId != null) {
+                    onValueChange(insertUiEvent.copy(idPasien = selectedId))
                 }
             },
-            label = { Text("Id Pasien") },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
+            modifier = Modifier.fillMaxWidth()
         )
-        OutlinedTextField(
-            value = insertUiEvent.idTerapis.toString(),
-            onValueChange = {
-                val newValue = it.toIntOrNull()
-                if (newValue != null) {
-                    onValueChange(insertUiEvent.copy(idTerapis = newValue))
+
+        DynamicSelectedField(
+            selectedValue = insertUiEvent.idTerapis?.let { id ->
+                viewModel.terapisList.find { it.idTerapis == id }?.namaTerapis ?: "Pilih Terapis"
+            } ?: "Pilih Terapis",
+            options = terapisList,
+            label = "Terapis",
+            placeholder = "Pilih Terapis",
+            onValueChangedEvent = { selectedNama ->
+                val selectedId = viewModel.terapisList.find { it.namaTerapis == selectedNama }?.idTerapis
+                if (selectedId != null) {
+                    onValueChange(insertUiEvent.copy(idTerapis = selectedId))
                 }
             },
-            label = { Text("Id Terapis") },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
+            modifier = Modifier.fillMaxWidth()
         )
-        OutlinedTextField(
-            value = insertUiEvent.idJenisTrapi.toString(),
-            onValueChange = {
-                val newValue = it.toIntOrNull()
-                if (newValue != null) {
-                    onValueChange(insertUiEvent.copy(idJenisTrapi = newValue))
+
+        DynamicSelectedField(
+            selectedValue = insertUiEvent.idJenisTrapi?.let { id ->
+                viewModel.jenisTrapiList.find { it.idJenisTrapi == id }?.namaJenisTrapi ?: "Pilih Jenis Terapi"
+            } ?: "Pilih Jenis Terapi",
+            options = jenisTrapiList,
+            label = "Jenis Terapi",
+            placeholder = "Pilih Jenis Terapi",
+            onValueChangedEvent = { selectedNama ->
+                val selectedId = viewModel.jenisTrapiList.find { it.namaJenisTrapi == selectedNama }?.idJenisTrapi
+                if (selectedId != null) {
+                    onValueChange(insertUiEvent.copy(idJenisTrapi = selectedId))
                 }
             },
-            label = { Text("Id Jenis Terapis") },
-            modifier = Modifier.fillMaxWidth(),
-            enabled = enabled,
-            singleLine = true
+            modifier = Modifier.fillMaxWidth()
         )
+
         OutlinedTextField(
             value = insertUiEvent.catatanSesi,
             onValueChange = { onValueChange(insertUiEvent.copy(catatanSesi = it)) },
@@ -156,6 +177,7 @@ fun FormInputSesi(
             enabled = enabled,
             singleLine = true
         )
+
         OutlinedTextField(
             value = insertUiEvent.tanggalSesi,
             onValueChange = { onValueChange(insertUiEvent.copy(tanggalSesi = it)) },
@@ -164,12 +186,14 @@ fun FormInputSesi(
             enabled = enabled,
             singleLine = true
         )
-        if(enabled) {
+
+        if (enabled) {
             Text(
                 text = "Isi Semua Data!",
                 modifier = Modifier.padding(12.dp)
             )
         }
+
         Divider(
             thickness = 8.dp,
             modifier = Modifier.padding(12.dp)

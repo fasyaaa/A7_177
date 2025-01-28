@@ -30,5 +30,11 @@ data class Sesi(
     @SerialName("tanggal_sesi")
     val tanggalSesi: String,
     @SerialName("catatan_sesi")
-    val catatanSesi: String
+    val catatanSesi: String,
+    @SerialName("nama_pasien")
+    val namaPasien: String,
+    @SerialName("nama_terapis")
+    val namaTerapis: String,
+    @SerialName("nama_jenisTrapi")
+    val namaJenisTrapi: String
 )

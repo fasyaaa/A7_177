@@ -14,7 +14,15 @@ import com.example.spa.ui.sesi.update.viewmodel.SesiUpdateViewModel
 object SesiPenyediaViewModel {
     val Factory = viewModelFactory {
         initializer { SesiHomeViewModel(SpaApplications().SesiContainer.kontakSesiRepository) }
-        initializer { SesiInsertViewModel(SpaApplications().SesiContainer.kontakSesiRepository ) }
+        initializer {
+            val spaApp = SpaApplications()
+            SesiInsertViewModel(
+                spaApp.SesiContainer.kontakSesiRepository,
+                spaApp.PasienContainer.kontakPasienRepository,
+                spaApp.TerapisContainer.kontakTerapisRepository,
+                spaApp.JenisTrapiContainer.kontakJenisTrapiRepository
+            )
+        }
         initializer { SesiDetailViewModel(createSavedStateHandle(),SpaApplications().SesiContainer.kontakSesiRepository) }
         initializer { SesiUpdateViewModel(createSavedStateHandle(),SpaApplications().SesiContainer.kontakSesiRepository) }
     }
