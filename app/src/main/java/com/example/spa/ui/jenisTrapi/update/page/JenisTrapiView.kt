@@ -23,7 +23,7 @@ import kotlinx.coroutines.withContext
 
 object DestinasiUpdateJeT: DestinasiNavigasi {
     override val route = "update_jenisTrapi"
-    override val titleRes = "Update Data Jenis Terapi"
+    override val titleRes = "Update Jenis Terapi"
     const val idJenisTrapi = "id_jenisTrapi"
     val routesWithArg = "$route/{$idJenisTrapi}"
 }

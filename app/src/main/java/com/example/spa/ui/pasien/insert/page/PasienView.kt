@@ -52,7 +52,7 @@ import java.util.Calendar
 
 object DestinasiInsertPasienEntry: DestinasiNavigasi{
     override val route = "entry_pasien"
-    override val titleRes = "Entry Pasien"
+    override val titleRes = "Pasien"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)

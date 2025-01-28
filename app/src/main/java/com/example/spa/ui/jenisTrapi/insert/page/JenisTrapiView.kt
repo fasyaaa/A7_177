@@ -43,7 +43,7 @@ import kotlinx.coroutines.launch
 
 object DestinasiInsertJeTEntry: DestinasiNavigasi {
     override val route = "entry_jenisTrapi"
-    override val titleRes = "Entry Data Jenis Trapi"
+    override val titleRes = "Jenis Trapi"
 }
 
 @OptIn(ExperimentalMaterial3Api::class)
