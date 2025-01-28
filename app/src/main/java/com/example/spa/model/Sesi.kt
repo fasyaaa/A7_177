@@ -27,6 +27,8 @@ data class Sesi(
     val idTerapis: Int,
     @SerialName("id_jenisTrapi")
     val idJenisTrapi: Int,
+    @SerialName("tanggal_sesi")
     val tanggalSesi: String,
+    @SerialName("catatan_sesi")
     val catatanSesi: String
 )
