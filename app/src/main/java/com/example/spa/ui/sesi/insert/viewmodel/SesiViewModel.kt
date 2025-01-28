@@ -13,6 +13,7 @@ import com.example.spa.repository.JenisTrapiRepository
 import com.example.spa.repository.PasienRepository
 import com.example.spa.repository.SesiRepository
 import com.example.spa.repository.TerapisRepository
+import com.example.spa.ui.pasien.insert.viewmodel.FormErrorStatePas
 import kotlinx.coroutines.launch
 
 class SesiInsertViewModel(private val ss: SesiRepository, private val pas: PasienRepository,
@@ -47,6 +48,32 @@ class SesiInsertViewModel(private val ss: SesiRepository, private val pas: Pasie
             } catch (e: Exception) {
                 e.printStackTrace()
             }
+        }
+    }
+
+    fun validateFields(insertUiEvent: SesiInsertUiEvent): FormErrorStateSesi {
+        return FormErrorStateSesi(
+            idPasienError = if (insertUiEvent.idPasien != null && insertUiEvent.idPasien > 0) null else "Pasien tidak boleh kosong",
+            idTerapisError = if (insertUiEvent.idTerapis != null && insertUiEvent.idTerapis > 0) null else "Terapis tidak boleh kosong",
+            idJenisTrapiError = if (insertUiEvent.idJenisTrapi != null && insertUiEvent.idJenisTrapi > 0) null else "Jenis Terapi tidak boleh kosong",
+            catatanSesiError = if (insertUiEvent.catatanSesi.isNotEmpty()) null else "Catatan Sesi tidak boleh kosong",
+            tanggalSesiError = if (insertUiEvent.tanggalSesi.isNotEmpty()) null else "Tanggal tidak boleh kosong"
+        )
+    }
+
+    data class FormErrorStateSesi(
+        val idPasienError: String? = null,
+        val idTerapisError: String? = null,
+        val idJenisTrapiError: String? = null,
+        val catatanSesiError: String? = null,
+        val tanggalSesiError: String? = null
+    ) {
+        fun isValid(): Boolean {
+            return idPasienError == null &&
+                    idTerapisError == null &&
+                    idJenisTrapiError == null &&
+                    catatanSesiError == null &&
+                    tanggalSesiError == null
         }
     }
 
