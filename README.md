@@ -71,11 +71,14 @@ Insert page sesi
 ![Tambah Sesi](https://github.com/user-attachments/assets/fe0d2d96-4c11-4f46-9dae-1bb8b01d7864)
 
 Detail page sesi
+![detail data sesi](https://github.com/user-attachments/assets/686daaeb-cbc3-42c5-9dde-783f458546dd)
 
 Update page sesi
+![update sesi](https://github.com/user-attachments/assets/70c50281-d3db-4882-ab8d-4ae3d3ec451f)
+![Hasil update sesi](https://github.com/user-attachments/assets/5b9eded1-1e1d-4197-88f2-c0c659fc3183)
 
 Delete result
-
+![Hapus sesi](https://github.com/user-attachments/assets/99ffefb3-c32e-4256-9113-41b04d4d1007)
 
 
 API for this project : https://github.com/fasyaaa/AppPijatAPI.git
