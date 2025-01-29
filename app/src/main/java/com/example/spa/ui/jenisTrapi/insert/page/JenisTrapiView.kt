@@ -73,8 +73,10 @@ fun EntryJeTScreen(
             onJenisTrapiValueChange = viewModel::updateInsertJtrState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.insertJeT()
-                    navigateBack()
+                    if (viewModel.validateFields()) {
+                        viewModel.insertJeT()
+                        navigateBack()
+                    }
                 }
             },
             modifier = Modifier

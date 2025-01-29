@@ -147,16 +147,16 @@ fun ItemDetailSs(
         ) {
             ComponentDetailSs(judul = "Id Sesi", isinya = sesi.idSesi.toString())
             Spacer(modifier = Modifier.padding(5.dp))
-            ComponentDetailSs(judul = "Id Pasien", isinya = sesi.idPasien.toString())
+            ComponentDetailSs(judul = "Nama Pasien", isinya = sesi.namaPasien)
             Spacer(modifier = Modifier.padding(5.dp))
-            ComponentDetailSs(judul = "Id Terapis", isinya = sesi.idTerapis.toString())
+            ComponentDetailSs(judul = "Nama Terapis", isinya = sesi.namaTerapis)
             Spacer(modifier = Modifier.padding(5.dp))
-            ComponentDetailSs(judul = "Id Jenis Terapi", isinya = sesi.idJenisTrapi.toString())
+            ComponentDetailSs(judul = "Nama Jenis Terapi", isinya = sesi.namaJenisTrapi)
             Spacer(modifier = Modifier.padding(5.dp))
             ComponentDetailSs(judul = "Catatan Sesi", isinya = sesi.catatanSesi)
             Spacer(modifier = Modifier.padding(5.dp))
 
-            val dateTime = OffsetDateTime.parse(sesi.tanggalSesi) // Parse ISO 8601
+            val dateTime = OffsetDateTime.parse(sesi.tanggalSesi)
             val formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
             val formattedTime = dateTime.format(DateTimeFormatter.ofPattern("HH:mm"))
 

@@ -27,6 +27,8 @@ import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
 import androidx.compose.runtime.rememberCoroutineScope
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -145,36 +147,48 @@ fun FormInputSesi(
 
     val context = LocalContext.current
     val calendar = Calendar.getInstance()
-    val year = calendar.get(Calendar.YEAR)
-    val month = calendar.get(Calendar.MONTH)
-    val day = calendar.get(Calendar.DAY_OF_MONTH)
-    val hour = calendar.get(Calendar.HOUR_OF_DAY)
-    val minute = calendar.get(Calendar.MINUTE)
 
+    val selectedDate = remember { mutableStateOf("") }
+    val selectedTime = remember { mutableStateOf("") }
+
+    // DatePickerDialog
     val datePickerDialog = DatePickerDialog(
         context,
-        { _, selectedYear, selectedMonth, selectedDay ->
-            val formattedDate = String.format(
+        { _, year, month, dayOfMonth ->
+            selectedDate.value = String.format(
                 "%04d-%02d-%02d",
-                selectedYear,
-                selectedMonth + 1,
-                selectedDay
+                year,
+                month + 1,
+                dayOfMonth
             )
-            onValueChange(insertUiEvent.copy(tanggalSesi = formattedDate))
+            if (selectedTime.value.isNotEmpty()) {
+                onValueChange(
+                    insertUiEvent.copy(
+                        tanggalSesi = "${selectedDate.value} ${selectedTime.value}"
+                    )
+                )
+            }
         },
-        year,
-        month,
-        day
+        calendar.get(Calendar.YEAR),
+        calendar.get(Calendar.MONTH),
+        calendar.get(Calendar.DAY_OF_MONTH)
     )
 
+    // TimePickerDialog
     val timePickerDialog = TimePickerDialog(
         context,
-        { _, selectedHour, selectedMinute ->
-            val formattedTime = String.format("%02d:%02d", selectedHour, selectedMinute)
-            onValueChange(insertUiEvent.copy(tanggalSesi = "${insertUiEvent.tanggalSesi} $formattedTime")) // Append waktu ke tanggal
+        { _, hourOfDay, minute ->
+            selectedTime.value = String.format("%02d:%02d", hourOfDay, minute)
+            if (selectedDate.value.isNotEmpty()) {
+                onValueChange(
+                    insertUiEvent.copy(
+                        tanggalSesi = "${selectedDate.value} ${selectedTime.value}"
+                    )
+                )
+            }
         },
-        hour,
-        minute,
+        calendar.get(Calendar.HOUR_OF_DAY),
+        calendar.get(Calendar.MINUTE),
         true
     )
 
@@ -260,16 +274,20 @@ fun FormInputSesi(
         OutlinedTextField(
             value = insertUiEvent.tanggalSesi,
             modifier = Modifier.fillMaxWidth(),
-            onValueChange = { onValueChange(insertUiEvent.copy(tanggalSesi = it)) },
+            onValueChange = { input ->
+                val regexFormat = Regex("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}(:\\d{2})?\$")
+                if (regexFormat.matches(input)) {
+                    onValueChange(insertUiEvent.copy(tanggalSesi = input))
+                }
+            },
             label = { Text("Tanggal dan Waktu") },
             placeholder = { Text("Masukkan Tanggal dan Waktu (YYYY-MM-DD HH:MM)") },
             colors = OutlinedTextFieldDefaults.colors(
                 focusedBorderColor = if (errorState.hasError(errorState.tanggalSesi)) Color.Red else colorResource(id = R.color.black),
                 unfocusedBorderColor = if (errorState.hasError(errorState.tanggalSesi)) Color.Red else colorResource(id = R.color.black)
             ),
-            keyboardOptions = KeyboardOptions(
-                keyboardType = KeyboardType.Text,
-                imeAction = ImeAction.Done
+            keyboardOptions = KeyboardOptions.Default.copy(
+                keyboardType = KeyboardType.Number
             ),
             readOnly = true,
             singleLine = true,
@@ -287,7 +305,6 @@ fun FormInputSesi(
                 )
             }
         )
-
         Text(
             text = errorState.tanggalSesi ?: "",
             color = Color.Red

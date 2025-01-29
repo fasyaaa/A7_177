@@ -1,5 +1,6 @@
 package com.example.spa.ui.sesi.insert.viewmodel
 
+import android.util.Log
 import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
@@ -15,6 +16,8 @@ import com.example.spa.repository.SesiRepository
 import com.example.spa.repository.TerapisRepository
 import com.example.spa.ui.pasien.insert.viewmodel.FormErrorStatePas
 import kotlinx.coroutines.launch
+import java.time.LocalDateTime
+import java.time.format.DateTimeFormatter
 import kotlin.math.tan
 
 class SesiInsertViewModel(private val ss: SesiRepository, private val pas: PasienRepository,
@@ -45,6 +48,19 @@ class SesiInsertViewModel(private val ss: SesiRepository, private val pas: Pasie
     suspend fun insertSs() {
         viewModelScope.launch {
             try {
+                var formattedTanggal = sesiUiState.sesiInsertUiEvent.tanggalSesi.trim()
+
+                val inputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                val outputFormatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm")
+                val dateTime = LocalDateTime.parse(formattedTanggal, inputFormatter)
+                formattedTanggal = dateTime.format(outputFormatter)
+
+                val isoDateTimeRegex = Regex("^\\d{4}-\\d{2}-\\d{2} \\d{2}:\\d{2}?\$")
+                if (!formattedTanggal.matches(isoDateTimeRegex)) {
+                    Log.e("SesiInsertViewModel", formattedTanggal)
+                    return@launch
+                }
+                Log.d("FormattedTanggal", formattedTanggal)
                 ss.insertSesi(sesiUiState.sesiInsertUiEvent.toSs())
             } catch (e: Exception) {
                 e.printStackTrace()

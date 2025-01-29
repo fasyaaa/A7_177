@@ -73,8 +73,10 @@ fun EntryTpsScreen(
             onTerapisValueChange = viewModel::terapisUpdateInsertState,
             onSaveClick = {
                 coroutineScope.launch {
-                    viewModel.insertTer()
-                    navigateBack()
+                    if (viewModel.validateFields()) {
+                        viewModel.insertTer()
+                        navigateBack()
+                    }
                 }
             },
             modifier = Modifier
