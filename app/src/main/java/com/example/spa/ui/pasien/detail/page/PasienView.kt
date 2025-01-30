@@ -133,9 +133,6 @@ fun ItemDetailPas(
     modifier: Modifier = Modifier,
     pasien: Pasien
 ){
-    val dateTime = OffsetDateTime.parse(pasien.tglLahir)
-    val formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
-
     Card(
         modifier = modifier.padding(16.dp),
         shape = MaterialTheme.shapes.medium,
@@ -152,7 +149,7 @@ fun ItemDetailPas(
             Spacer(modifier =Modifier.padding(5.dp))
             ComponentDetailPas(judul = "Nama Pasien", isinya = pasien.namaPasien)
             Spacer(modifier =Modifier.padding(5.dp))
-            ComponentDetailPas(judul = "Tanggal Lahir", isinya = formattedDate)
+            ComponentDetailPas(judul = "Tanggal Lahir", isinya = pasien.tglLahir)
             Spacer(modifier =Modifier.padding(5.dp))
             ComponentDetailPas(judul = "Alamat", isinya = pasien.alamat)
             Spacer(modifier =Modifier.padding(5.dp))
