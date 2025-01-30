@@ -35,6 +35,8 @@ import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailUiState
 import com.example.spa.ui.pasien.detail.viewmodel.PasienDetailViewModel
 import com.example.spa.ui.pasien.home.page.OnError
 import com.example.spa.ui.pasien.home.page.OnLoading
+import java.time.OffsetDateTime
+import java.time.format.DateTimeFormatter
 
 object DestinasiDetailPasien: DestinasiNavigasi{
     override val route = "detail_pasien"
@@ -131,6 +133,9 @@ fun ItemDetailPas(
     modifier: Modifier = Modifier,
     pasien: Pasien
 ){
+    val dateTime = OffsetDateTime.parse(pasien.tglLahir)
+    val formattedDate = dateTime.format(DateTimeFormatter.ofPattern("yyyy-MM-dd"))
+
     Card(
         modifier = modifier.padding(16.dp),
         shape = MaterialTheme.shapes.medium,
@@ -147,7 +152,7 @@ fun ItemDetailPas(
             Spacer(modifier =Modifier.padding(5.dp))
             ComponentDetailPas(judul = "Nama Pasien", isinya = pasien.namaPasien)
             Spacer(modifier =Modifier.padding(5.dp))
-            ComponentDetailPas(judul = "Tanggal Lahir", isinya = pasien.tglLahir)
+            ComponentDetailPas(judul = "Tanggal Lahir", isinya = formattedDate)
             Spacer(modifier =Modifier.padding(5.dp))
             ComponentDetailPas(judul = "Alamat", isinya = pasien.alamat)
             Spacer(modifier =Modifier.padding(5.dp))
